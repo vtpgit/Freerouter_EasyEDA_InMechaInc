@@ -1,0 +1,34 @@
+{
+  "web": {
+    "ip": "127.0.0.1",
+    "port": 3579,
+    "allowed_origins": []
+  },
+  "router": {
+    "min_timeout": 300000,
+    "keep_heartbeat": 5000,
+    "finish_margin": 10000,
+    "parallel_runs": 0,
+    "early_stop_factor": 1.5,
+    "fanout_share": 0.25,
+    "optimizer_share": 0.2,
+    "send_progress": false,
+    "max_parallel_jobs": 1,
+    "keep_jobs": 10
+  },
+  "engine": {
+    "jar": "engine/freerouting-2.5.0.jar",
+    "java": "",
+    "offline": true,
+    "max_heap_mb": 0,
+    "affinity_mask": "",
+    "args": []
+  },
+  "repair": {
+    "join_outline": true,
+    "fix_zero_size_pads": true,
+    "rename_nets": true,
+    "drop_protected_nets": true,
+    "reorder_layers": false
+  }
+}

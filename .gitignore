@@ -1,0 +1,22 @@
+# Build output
+classes/
+test/classes/
+bridge.jar
+manifest.txt
+
+# Downloaded by the setup script
+engine/*.jar
+runtime/
+
+# Job folders and logs. They hold board files.
+jobs/
+bridge.out
+*.routed.json
+*.routed.report.txt
+
+# Editors and operating systems
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db

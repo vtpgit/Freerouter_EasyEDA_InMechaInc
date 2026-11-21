@@ -1,0 +1,68 @@
+{
+  "time": {
+    "job_s": 600
+  },
+  "edge": {
+    "copper_to_edge_mm": 0.3
+  },
+  "via": {
+    "on_pads": "mixed",
+    "plane_pads": "all",
+    "plane_stubs": "off",
+    "fine_pitch_pad_mm": 0.3,
+    "pads": [],
+    "pad_via_diameter_mm": 0.249,
+    "pad_via_hole_mm": 0.15,
+    "diameter_mm": 0,
+    "hole_mm": 0,
+    "cost": 50,
+    "plane_cost": 5
+  },
+  "planes": {
+    "from_copper_areas": "inner",
+    "pours": "after",
+    "pour_contact": 0.3,
+    "second_pass": "on",
+    "repair_track_mm": 4.0,
+    "supply": "plane",
+    "bridge_tracks": "on",
+    "ground_net": "(?i)^(A|D|P|S)?GND.*|^VSS.*|^0V$|^EARTH$|^GROUND$",
+    "list": []
+  },
+  "layers": {
+    "costs": "rules",
+    "top_track_cost": 1.0,
+    "bottom_track_cost": 1.15,
+    "inner_track_cost": 1.6,
+    "supply_plane_track_cost": 4.0,
+    "ground_plane_track_cost": 4.0,
+    "by_layer": {}
+  },
+  "first_stage": {
+    "min_via_distance_mm": 0.0,
+    "max_escape_mm": 3.0
+  },
+  "track": {
+    "narrow": "mixed",
+    "tidy": "on",
+    "retry_width_mm": 0
+  },
+  "nets": [],
+  "keepout": {
+    "antenna_margin_mm": 0.3,
+    "antenna_shape": "hull",
+    "hole_clearance_mm": 0.2,
+    "boxes": []
+  },
+  "parts": {
+    "move": "off",
+    "movable": ["R[0-9]+", "C[0-9]+", "L[0-9]+"],
+    "fixed": [],
+    "max_pads": 2,
+    "max_shift_mm": 0.15,
+    "gap_mm": 0.15
+  },
+  "existing": "keep",
+  "rules_from": "design_rules",
+  "recombine": "on"
+}

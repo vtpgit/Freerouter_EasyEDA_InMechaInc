@@ -1,0 +1,58 @@
+EasyEDA to Freerouting bridge 1.3.0. Report of file job 1
+2026-11-21 16:58
+
+BOARD
+  Parts: 133. Pads: 509. Copper layers: top, inner1, inner2, bottom.
+  Nets to route: 97. Open connections before routing: 221.
+
+PLAN
+  Rules: track 0.100 mm, clearance 0.100 mm, via 0.300 mm with 0.200 mm hole. Source: the design rules of the file, as the Design Rule dialog of the editor shows them (rules: rules_from).
+  The Auto Router values that the editor stored in the file (menu Route, Auto Router) have other values: track 0.150 mm, clearance 0.150 mm, via 0.400 mm with 0.200 mm hole. The job does not use them.
+  Copper area as plane: net VDD_3V3 on inner2. The engine routes nothing for a pad of this net that lies in an area on its layer or has a via into an area.
+  Copper area as plane: net GND on inner1. The engine routes nothing for a pad of this net that lies in an area on its layer or has a via into an area.
+  Track cost factor by layer: top 1.0, inner1 4.0, inner2 4.0, bottom 1.15.
+  Keep-out: 564 rectangles and 2 holes.
+  Existing copper of the routed nets: 0 tracks and 18 vias in the file. All stay and are fixed.
+  Net GND is a skip net in the editor and has a copper area. The router connects its pads to that area.
+  Part ANT1 has copper without net. The area around this copper is closed for new copper on all layers: the hull of the copper plus 0.30 mm, 81 mm2 (564 rectangles). The rectangle around the copper has 198 mm2 (rules: keepout.antenna_shape).
+  28 pads have no exit on their layer and get a via of 0.249 mm in the pad: {U1=21, U18=5, U4=2}. The board needs filled and capped vias for these.
+  31 pads get a via of 0.249 mm in the pad, into a copper area of their net on a different layer: {D2=1, D7=1, FPC2=3, J1=1, Q7=1, R11=1, R12=1, U1=17, U12=1, U13=1, U6=1, U8=1, U9=1}. The engine makes no track for them. (rules: via.plane_pads)
+  108 pads lie in a copper area of their net on their own layer, and the fill reaches them: {GND=108}. The engine makes no track and no via for them. After routing the bridge models the fill and repairs the pads that tracks cut off (rules: planes.pours).
+
+ENGINE RUNS (4 at the same time, 341 s)
+  Run 1 (as sent): open connections 1, vias 201 (77 in pads), track length 985 mm, narrow segments 31.
+  Run 2 (small via permitted in any pad): open connections 3, vias 206 (114 in pads), track length 965 mm, narrow segments 27.
+  Run 3 (order 1): open connections 2, vias 194 (78 in pads), track length 989 mm, narrow segments 33.
+  Run 4 (order 1, small via permitted in any pad, no narrow tracks): open connections 0, vias 213 (98 in pads), track length 1017 mm, narrow segments 0. Chosen.
+  Mixed job (rules: via.on_pads = mixed): each second run could put the small via into any pad. The result with the fewest open connections is chosen. At an equal count, the result with more vias in pads is chosen.
+  Mixed job (rules: track.narrow = mixed): one run of four got no narrow tracks from the engine. At an equal count of open connections, the result with fewer narrow segments is chosen.
+
+RESULT
+  Open connections: 0 in 0 nets.
+  Tracks: 313 records. The engine and the bridge made 455 pieces (1 of them added after the engine, see COPPER AREAS). Pieces that join end to end are one record now (rules: track.tidy). Length by layer in mm, engine tracks: top 635.7 inner1 1.6 inner2 4.0 bottom 375.4.
+  Vias: 213, 98 of them in a pad of their net. Added after the engine: 30 in islands of copper areas, 1 at the end of a short track from a pad, 0 in pads. From the engine: 94 of 0.249 mm with 0.15 mm hole. 88 of 0.300 mm with 0.20 mm hole.
+  Track clean-up (rules: track.tidy): 0 narrow segments got the full width, 0 in their position and 0 after a shift to the side of 0.000 mm or less. 1 small steps and 1 side steps went away. New copper keeps the clearance rule plus 0.0015 mm. A segment with the full width keeps the clearance rule plus 0.0002 mm.
+  Segments narrower than the track rule in the result: 0.
+  Records removed from the file (old tracks and vias of the routed nets): 18.
+
+COPPER AREAS (model of the fill: outline minus the clearance of the area to other nets, parts narrower than 0.19 mm removed)
+  GND: after the engine the pads were in 32 groups. Added: 30 vias in islands of the copper areas, 1 tracks on outer layers from a pad to copper of the net or to a new via (1.3 mm, 1 vias), 0 vias in pads, 0 tracks on inner layers (0.0 mm). Groups now: 1.
+  GND on bottom in the result file: 101 pieces of fill, 5 of them reach copper of the net. Open connections of the net: 0.
+  GND on inner1 in the result file: 11 pieces of fill, 1 of them reach copper of the net. Open connections of the net: 0.
+  GND on top in the result file: 153 pieces of fill, 39 of them reach copper of the net. Open connections of the net: 0.
+  VDD_3V3 on inner2 in the result file: 17 pieces of fill, 1 of them reach copper of the net. Open connections of the net: 0.
+  The fill of the editor can differ from the model at narrow positions. After the rebuild, look for connection lines that stay visible.
+
+CHECKS OF THE RESULT FILE (made by the bridge on the written file, without the engine)
+  Clearance between copper of different nets, tolerance 0.002 mm: 0 errors with a track or a via.
+  Tracks and vias nearer than 0.30 mm to the board edge: 0.
+  Tracks and vias inside a keep-out: 0.
+  Smallest track width: 0.100 mm. Rule of the file: 0.100 mm.
+  Via sizes: 0.249 mm with 0.15 mm hole, 0.300 mm with 0.20 mm hole.
+  Ids that occur two times: 0.
+  Copper areas: the connections are counted with a model of the fill of each area of a routed net. See COPPER AREAS.
+
+NEXT STEPS IN THE EDITOR
+  1. Open the result file as a new PCB.
+  2. Rebuild the copper areas (Shift+B). The bridge emptied their stored fill.
+  3. Run the design rule check.
